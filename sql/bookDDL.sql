@@ -1,0 +1,38 @@
+ 
+CREATE TABLE author (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  age INTEGER NOT NULL
+);
+
+CREATE TABLE books (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  description VARCHAR NOT NULL,
+  author_id INTEGER REFERENCES author
+);
+
+INSERT INTO author
+  (name, age)
+  VALUES ('Jonathan Lovelock', 23);
+  
+INSERT INTO author
+  (name, age)
+  VALUES ('Stuart Andrew', 21);
+  
+INSERT INTO books
+  (name, description, author_id)
+  VALUES ('Wind in the willows', 'Really good book I love it', 1);
+
+INSERT INTO books
+  (name, description, author_id)
+  VALUES ('Alexy Lahey Biography', 'Really good book I love it', 1);
+INSERT INTO books
+  (name, description, author_id)
+  VALUES ('Sexy Stu Book', 'Really good book I love it', 1);
+
+
+select b.name as "Book Name", b.description as "Book Description", a.name as "Auhor Name" from books as b
+join author as a
+on a.id = b.author_id
+;

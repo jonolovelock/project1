@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Index Page
+{% endblock %}
+
+{% block body %}
+    <p>
+        This is the booklist
+    </p>
+
+    <ul>
+        {% for book in books %}
+            <li>{{ book.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{{ url_for('index') }}" method="post">
+        <input type="text" name="author.name" placeholder="Author Name">
+        <input type="integer" name="author.age" placeholder="Author Age">
+        <input type="text" name="book.name" placeholder="Book Name">
+        <input type="text" name="book.description" placeholder="Book Description">
+        <button>Submit</button>
+    </form>
+
+    <a href="{{ url_for('buy') }}">Click here if you would like to buy</a>
+{% endblock %}
