@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8129a076-dcd9-4a07-808c-130c0572c6f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/author.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/bookDDL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/bookDDL.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +117,9 @@
       <workItem from="1567221297868" duration="93000" />
       <workItem from="1567221441592" duration="1357000" />
       <workItem from="1567223848875" duration="4978000" />
-      <workItem from="1567290592135" duration="1866000" />
+      <workItem from="1567290592135" duration="2175000" />
+      <workItem from="1567292793448" duration="133000" />
+      <workItem from="1567292949470" duration="4594000" />
     </task>
     <servers />
   </component>
@@ -132,7 +131,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

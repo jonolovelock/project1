@@ -1,4 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
+
+#cannot resolve reference to 'from flask_sqlalchemy import SQLAlchemy db = SQLAlchemy()'
+#might be in other packages but not sure yet
 
   db = SQLAlchemy()
 
@@ -10,7 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
   class Book(db.Model):
-      __tablename__ = "passengers"
+      __tablename__ = "book"
       id = db.Column(db.Integer, primary_key=True)
       title = db.Column(db.String, nullable=False)
       description = db.Column(db.String, nullable=False)

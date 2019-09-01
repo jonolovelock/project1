@@ -1,9 +1,3 @@
- 
-CREATE TABLE author (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL,
-  age INTEGER NOT NULL
-);
 
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
@@ -11,6 +5,7 @@ CREATE TABLE books (
   description VARCHAR NOT NULL,
   author_id INTEGER REFERENCES author
 );
+
 
 INSERT INTO author
   (name, age)

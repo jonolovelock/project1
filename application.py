@@ -1,31 +1,21 @@
 import os
 
-
 from flask import Flask, render_template, request, session
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from author import Author
-
-
-# define database config
-heroku =  "postgres://fxajisrezkeids:a29d2a65c7596a7f79572a586c1a01f5403830a71ae26edc4d0f7baae54f508f@ec2-54-195-252-243.eu-west-1.compute.amazonaws.com:5432/d1028oorm7i8lj"
-localhost = 'localhost'
+from models import *
 
 app = Flask(__name__)
 # temp config
 app.config["FLASK_DEBUG"] = True
 
-# Check for environment variable inc temporary hack
-# Fix before posting
 if not os.getenv("DATABASE_URL"):
     raise RuntimeError("DATABASE_URL is not set")
-
 
 # Configure session to use filesystem
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-
 
 Session(app)
 
@@ -48,6 +38,7 @@ def index():
         #construct author object
         author = author.Author(name, age)
         #construct book object
+
         #add to database
         #commit to database
         #render template
