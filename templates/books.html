@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Books List Page
+{% endblock %}
+
+{% block body %}
+    <p>
+        This is the booklist
+    </p>
+
+    <ul>
+        <li>Search for a list of books</li>
+        <li>Click through from a book to go to detailed page</li>
+    </ul>
+
+    <form action="{{ url_for('books') }}" method="post">
+        <input type="text" name="isbn" placeholder="Search on ISBN">
+        <input type="text" name="title" placeholder="Search on Title">
+        <input type="text" name="author" placeholder="Search on Author">
+        <button>Search</button>
+    </form>
+
+    <p>Based on results from DB: build a list</p>
+
+    {% if books is not none %}
+        <div class="container">
+            {% for book in books %}
+                <div class="row">
+                    <div class="col-3">
+                        {{ book.title }}
+                    </div>
+                    <div class="col-3">
+                        {{ book.isbn }}
+                    </div>
+                    <div class="col-3">
+                        {{ book.year }}
+                    </div>
+                    <div class="col-3">
+                        {{ book.author }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

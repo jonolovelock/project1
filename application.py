@@ -4,7 +4,6 @@ from flask import Flask, render_template, request, session
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from models import *
 
 app = Flask(__name__)
 # temp config
@@ -21,42 +20,48 @@ Session(app)
 
 # Set up database
 #engine = create_engine(os.getenv("DATABASE_URL"))
-engine = create_engine('postgresql://postgres:jono@localhost:5432/books')
+engine = create_engine('postgresql://postgres:jono@localhost:5432/bookshop')
 db = scoped_session(sessionmaker(bind=engine))
 
-#query = "select b.name as 'Book Name', b.description as 'Book Description', a.name as 'Author Name' from books as b join author as a on a.id = b.author_id;"
 
-#books = db.execute("SELECT * from books").fetchall()  # execute this SQL command and return all of the results
-
-@app.route("/", methods=["POST", "GET"])
-def index():
-    books = db.execute("SELECT * from books").fetchall()  # execute this SQL command and return all of the results
-
+@app.route("/books", methods=["GET", "POST"])
+def books():
     if request.method == "POST":
-        book = request.form.get("book") # match form var name
-        #get variables from form
-        #construct author object
-        author = author.Author(name, age)
-        #construct book object
+        if request.form.get("isbn"):
+            formIsbn = "%" + request.form.get("isbn") + "%"
 
-        #add to database
-        #commit to database
-        #render template
-    return render_template("index.html", books=books)
+            books = db.execute("SELECT * from books WHERE isbn LIKE :isbn", {"isbn": formIsbn})
+        if request.form.get("title"):
+            formTitle = "%" + request.form.get("title") + "%"
+
+            books = db.execute("SELECT * from books WHERE title LIKE :title", {"title": formTitle})
+        if request.form.get("author"):
+            formAuthor = "%" + request.form.get("author") + "%"
+
+            books = db.execute("SELECT * from books WHERE author LIKE :author", {"author": formAuthor})
+        return render_template("books.html", books=books)
+    return render_template("books.html")
+
+@app.route("/book/:id", methods=["GET", "POST"])
+def book():
+    if request.method == "POST":
+        pass
+        #add a book review
+    #go to database with id and get book object
+    #pass book object to book page
+    return render_template("book.html")
+
+@app.route("/register")
+def register():
+    return  render_template("register.html")
 
 
-@app.route("/buy")
-def buy():
-    return render_template("buy.html")
-
-# Routes - this must come before index route
-@app.route("/<string:name>")
-def hello(name):
-    name = name
-    return render_template("index.html", name=name)
+@app.route("/login")
+def login():
+    return  render_template("register.html")
 
 
-@app.route('/Jono')
-def Jono():
-    return "Jono"
-
+@app.route("/")
+def index():
+    #books = db.execute("SELECT * from books").fetchall()  # execute this SQL command and return all of the results
+    return render_template("index.html")

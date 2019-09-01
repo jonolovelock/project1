@@ -1,11 +1,25 @@
+DROP DATABASE books;
+
+CREATE DATABASE bookshop
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_Australia.1252'
+    LC_CTYPE = 'English_Australia.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
 
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
-  isbn INTEGER NOT NULL
+  isbn INTEGER NOT NULL,
   title VARCHAR NOT NULL,
   author VARCHAR NOT NULL,
   year INTEGER NOT NULL
 );
+
+-- User TABLE
+
+-- Review TABLE
 
 
 INSERT INTO author

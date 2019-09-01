@@ -6,22 +6,11 @@
 
 {% block body %}
     <p>
-        This is the booklist
+        This is the index page where you can select to login of go to the books search page
     </p>
-
     <ul>
-        {% for book in books %}
-            <li>{{ book.name }}</li>
-        {% endfor %}
+        <li><a href="{{ url_for('books') }}">Click here if you would like to search our Books Database</a></li>
+        <li><a href="{{ url_for('register') }}">Click here if you would like to Register</a></li>
+        <li><a href="{{ url_for('login') }}">Click here if you would like to Log in</a></li>
     </ul>
-
-    <form action="{{ url_for('index') }}" method="post">
-        <input type="text" name="author.name" placeholder="Author Name">
-        <input type="integer" name="author.age" placeholder="Author Age">
-        <input type="text" name="book.name" placeholder="Book Name">
-        <input type="text" name="book.description" placeholder="Book Description">
-        <button>Submit</button>
-    </form>
-
-    <a href="{{ url_for('buy') }}">Click here if you would like to buy</a>
 {% endblock %}

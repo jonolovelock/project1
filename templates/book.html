@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Books List Page
+{% endblock %}
+
+{% block body %}
+    <p>
+        This is the booklist
+    </p>
+
+    <ul>
+        <li>Detailed Book Summary</li>
+        <li>Other Reviews</li>
+        <li>GoodReads API info</li>
+    </ul>
+
+    <form action="{{ url_for('books') }}" method="post">
+        <input type="text" name="author.name" placeholder="Add your book review>
+
+        <button>Submit</button>
+    </form>
+
+{% endblock %}
