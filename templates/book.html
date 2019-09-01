@@ -1,22 +1,19 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    Books List Page
+    Book Detailed Page
 {% endblock %}
 
 {% block body %}
-    <p>
-        This is the booklist
-    </p>
 
     <ul>
-        <li>Detailed Book Summary</li>
-        <li>Other Reviews</li>
-        <li>GoodReads API info</li>
+        {% for book in books %}
+            <li>Detailed Book Summary for {{ book.title }}</li>
+        {% endfor %}
     </ul>
 
     <form action="{{ url_for('books') }}" method="post">
-        <input type="text" name="author.name" placeholder="Add your book review>
+        <input type="text" name="author.name" placeholder="Add your book review">
 
         <button>Submit</button>
     </form>

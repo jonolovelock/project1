@@ -19,7 +19,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Set up database
-#engine = create_engine(os.getenv("DATABASE_URL"))
+# engine = create_engine(os.getenv("DATABASE_URL"))
 engine = create_engine('postgresql://postgres:jono@localhost:5432/bookshop')
 db = scoped_session(sessionmaker(bind=engine))
 
@@ -42,26 +42,28 @@ def books():
         return render_template("books.html", books=books)
     return render_template("books.html")
 
-@app.route("/book/:id", methods=["GET", "POST"])
-def book():
+
+@app.route("/books/<int:id>", methods=["GET", "POST"])
+def book(id):
     if request.method == "POST":
         pass
-        #add a book review
-    #go to database with id and get book object
-    #pass book object to book page
-    return render_template("book.html")
+        # add a book review
+    # Although only one book, flask still treats SQL response as a list
+    dbbook = db.execute("SELECT * FROM books WHERE id = :id", {"id": id})
+    return render_template("book.html", books=dbbook)
+
 
 @app.route("/register")
 def register():
-    return  render_template("register.html")
+    return render_template("register.html")
 
 
 @app.route("/login")
 def login():
-    return  render_template("register.html")
+    return render_template("register.html")
 
 
 @app.route("/")
 def index():
-    #books = db.execute("SELECT * from books").fetchall()  # execute this SQL command and return all of the results
+
     return render_template("index.html")

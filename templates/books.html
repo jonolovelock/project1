@@ -33,11 +33,14 @@
                     <div class="col-3">
                         {{ book.isbn }}
                     </div>
-                    <div class="col-3">
+                    <div class="col-2">
                         {{ book.year }}
                     </div>
                     <div class="col-3">
                         {{ book.author }}
+                    </div>
+                     <div class="col-1">
+                        <a href="books/{{ book.id }}">More Details</a>
                     </div>
                 </div>
             {% endfor %}
