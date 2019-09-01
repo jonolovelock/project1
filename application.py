@@ -29,15 +29,12 @@ def books():
     if request.method == "POST":
         if request.form.get("isbn"):
             formIsbn = "%" + request.form.get("isbn") + "%"
-
             books = db.execute("SELECT * from books WHERE isbn LIKE :isbn", {"isbn": formIsbn})
         if request.form.get("title"):
             formTitle = "%" + request.form.get("title") + "%"
-
             books = db.execute("SELECT * from books WHERE title LIKE :title", {"title": formTitle})
         if request.form.get("author"):
             formAuthor = "%" + request.form.get("author") + "%"
-
             books = db.execute("SELECT * from books WHERE author LIKE :author", {"author": formAuthor})
         return render_template("books.html", books=books)
     return render_template("books.html")
@@ -65,5 +62,4 @@ def login():
 
 @app.route("/")
 def index():
-
     return render_template("index.html")
