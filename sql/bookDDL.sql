@@ -1,9 +1,10 @@
 
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
+  isbn INTEGER NOT NULL
   title VARCHAR NOT NULL,
-  description VARCHAR NOT NULL,
-  author_id INTEGER REFERENCES author
+  author VARCHAR NOT NULL,
+  year INTEGER NOT NULL
 );
 
 
