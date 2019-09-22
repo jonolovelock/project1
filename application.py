@@ -40,25 +40,76 @@ def books():
     return render_template("books.html")
 
 
-@app.route("/books/<int:id>", methods=["GET", "POST"])
-def book(id):
+@app.route("/books/<int:book_id>", methods=["GET", "POST"])
+def book(book_id):
     if request.method == "POST":
-        pass
-        # add a book review
+        rating = request.form.get("rating")
+        review = request.form.get("review")
+        reviewer = request.form.get("reviewer")
+        db.execute("INSERT into reviews"
+                   "(rating, review, reviewer, book)"
+                   "VALUES (:rating, :review,:reviewer, :book_id)",
+                   {"rating": rating,
+                    "review": review,
+                    "reviewer": reviewer,
+                    "book_id": book_id})
+        db.commit()
+
     # Although only one book, flask still treats SQL response as a list
-    dbbook = db.execute("SELECT * FROM books WHERE id = :id", {"id": id})
-    return render_template("book.html", books=dbbook)
+    dbbook = db.execute("SELECT * FROM books WHERE id = :id", {"id": book_id})
 
+    #probably inefficent to connext to DB twice
+    dbreviews = db.execute("SELECT * FROM reviews WHERE book = :id", {"id": book_id})
 
-@app.route("/register")
+    return render_template("book.html", books=dbbook, reviews=dbreviews)
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        username = request.form.get("username")
+        firstname = request.form.get("firstname")
+        lastname = request.form.get("lastname")
+        email = request.form.get("email")
+        password = request.form.get("password")
+        db.execute("INSERT into users"
+                   "(username, firstname, lastname, email, password)"
+                   "VALUES(:username, :firstname, :lastname, :email, :password)",
+                   {"username": username,
+                    "firstname": firstname,
+                    "lastname": lastname,
+                    "email": email,
+                    "password": password})
+        newuser = db.execute("select currval('users_id_seq')")
+        newID = 0
+        for user in newuser:
+            newID = user.currval
+        user = db.execute("Select * from users where id = :id", {"id": newID})
+        db.commit()
+        return render_template("register.html", users=user)
     return render_template("register.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("register.html")
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        dbuser = db.execute("Select * from users where username= :username", {"username": username})
+        for user in dbuser:
+            if user.password == password:
+                session["user_id"]= user.id
+                print(session["user_id"])
+                message = "You have successfully loggged in"
+            else:
+                message = "Incorrect User Name or Password"
+            return render_template("login.html", message=message)
+    return render_template("login.html")
 
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return render_template("index.html")
 
 @app.route("/")
 def index():

@@ -26,9 +26,16 @@
               <li class="nav-item active">
                 <a class="nav-link" href="register">Register</a>
               </li>
+              {% if session.get("user_id") is none %}
               <li class="nav-item active">
                 <a class="nav-link" href="login">Log In</a>
               </li>
+              {% endif %}
+              {% if session.get("user_id") %}
+              <li class="nav-item active">
+                <a class="nav-link" href="logout">Log Out</a>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </nav>

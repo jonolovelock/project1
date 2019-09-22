@@ -5,17 +5,24 @@
 {% endblock %}
 
 {% block body %}
+    {% for book in books %}
+        <ul>
+
+            <li>Detailed Book Summary for {{ book.title }}</li>
+        </ul>
+            <p> Add your own review!! </p>
+            <form action="{{ url_for('book', book_id = book.id)     }}" method="post">
+                <input type="text" name="review" placeholder="Add your book review">
+                <input type="number" name="rating" placeholder="Rating: 1 (low) - 5 (high)">
+                <input type="number" name="reviewer" placeholder="Add the Reviewer ID">
+                <button>Submit</button>
+            </form>
+    {% endfor %}
 
     <ul>
-        {% for book in books %}
-            <li>Detailed Book Summary for {{ book.title }}</li>
+        {% for review in reviews %}
+            <li>{{ review.review }}</li>
         {% endfor %}
     </ul>
-
-    <form action="{{ url_for('books') }}" method="post">
-        <input type="text" name="author.name" placeholder="Add your book review">
-
-        <button>Submit</button>
-    </form>
 
 {% endblock %}
