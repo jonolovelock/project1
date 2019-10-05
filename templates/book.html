@@ -19,10 +19,21 @@
             </form>
     {% endfor %}
 
-    <ul>
-        {% for review in reviews %}
-            <li>{{ review.review }}</li>
-        {% endfor %}
-    </ul>
-
+    {% if reviews is not none %}
+        <div class="container">
+            {% for review in reviews %}
+                <div class="row">
+                    <div class="col-2">
+                        {{ review.rating }}
+                    </div>
+                    <div class="col-6">
+                        {{ review.review }}
+                    </div>
+                    <div class="col-2">
+                        {{ review.reviewer }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
