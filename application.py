@@ -1,7 +1,7 @@
 import os
 import requests
 
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -131,6 +131,34 @@ def login():
             return render_template("login.html", message=message)
     return render_template("login.html")
 
+@app.route("/api/<string:isbn>")
+def books_api(isbn):
+    if db.execute("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).rowcount == 0:
+        return jsonify({"error": "There are no books with that ISBN"}), 404
+    dbBook = db.execute("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn})
+    for book in dbBook:
+        #title = book.title
+        #author = book.author
+        #year = book.year
+        #isbn = book.isbn
+
+        review_count = 99
+        db_review_count = db.execute("SELECT COUNT(*) as count FROM reviews where book = :book", {"book": book.id})
+        for review in db_review_count:
+            review_count = str(review.count)
+
+        ave_score = 99
+        db_ave_score = db.execute("SELECT AVG(rating) as ave FROM reviews where book = :book", {"book": book.id})
+        for score in db_ave_score:
+            ave_score = str(round(score.ave,1))
+        return jsonify({
+            "title": book.title,
+            "author": book.author,
+            "year": book.year,
+            "isbn": book.isbn,
+            "review_count": review_count,
+            "average_score": ave_score
+        })
 
 @app.route("/logout")
 def logout():
