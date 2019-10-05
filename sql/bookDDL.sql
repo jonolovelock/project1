@@ -1,5 +1,7 @@
 DROP DATABASE bookshop;
 
+-- clear earlier reviews
+
 CREATE DATABASE bookshop
     WITH 
     OWNER = postgres
@@ -29,13 +31,15 @@ CREATE TABLE users (
 
 
 -- Review TABLE
-
+--Review table - make primary key a composite of id, reviewer and book
 CREATE TABLE reviews (
-	id SERIAL PRIMARY KEY,
+	id SERIAL,
 	rating INTEGER NOT NULL,
 	review VARCHAR NOT NULL,
 	reviewer INTEGER references users,
-	book INTEGER references books
+	book INTEGER references books,
+	PRIMARY KEY(id, reviewer, book),
+	UNIQUE (reviewer, book)
 );	
 
 

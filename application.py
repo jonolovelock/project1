@@ -54,6 +54,8 @@ def book(book_id):
         rating = request.form.get("rating")
         review = request.form.get("review")
         reviewer = request.form.get("reviewer")
+        if db.execute("SELECT * from reviews WHERE reviewer = :reviewer", {"reviewer": reviewer}).rowcount > 0:
+            return render_template("error.html", message="Sorry, you are only able to submit one review per book")
         db.execute("INSERT into reviews"
                    "(rating, review, reviewer, book)"
                    "VALUES (:rating, :review,:reviewer, :book_id)",
@@ -62,6 +64,8 @@ def book(book_id):
                     "reviewer": reviewer,
                     "book_id": book_id})
         db.commit()
+
+
 
     # Although only one book, flask still treats SQL response as a list
     dbbook = db.execute("SELECT * FROM books WHERE id = :id", {"id": book_id})

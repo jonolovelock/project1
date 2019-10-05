@@ -7,10 +7,10 @@
 {% block body %}
     {% for book in books %}
         <ul>
+            <li> {{ book.title }} was written by {{ book.author }} in {{ book.year }} and it's ISBN Number is {{ book.isbn }}</li>
 
-            <li>Detailed Book Summary for {{ book.title }}</li>
         </ul>
-            <p> Add your own review!! </p>
+            <p> Reviews left by other users are below! If you'd like to add your own you will need to Register and Log in first </p>
             <form action="{{ url_for('book', book_id = book.id)     }}" method="post">
                 <input type="text" name="review" placeholder="Add your book review">
                 <input type="number" name="rating" placeholder="Rating: 1 (low) - 5 (high)">
