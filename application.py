@@ -150,7 +150,10 @@ def books_api(isbn):
         ave_score = 99
         db_ave_score = db.execute("SELECT AVG(rating) as ave FROM reviews where book = :book", {"book": book.id})
         for score in db_ave_score:
-            ave_score = str(round(score.ave,1))
+            if score.ave:
+                ave_score = str(round(score.ave, 1))
+            else:
+                ave_score = 0
         return jsonify({
             "title": book.title,
             "author": book.author,
