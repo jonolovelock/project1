@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8129a076-dcd9-4a07-808c-130c0572c6f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/flask_session/d4d761e70b71efef5461d009e4ebed61" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_session/2029240f6d1128be89ddc32729463129" beforeDir="false" afterPath="$PROJECT_DIR$/flask_session/2029240f6d1128be89ddc32729463129" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_session/fad117b7f9c6c6aaa96ee798b5949837" beforeDir="false" afterPath="$PROJECT_DIR$/flask_session/fad117b7f9c6c6aaa96ee798b5949837" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_session/fad117b7f9c6c6aaa96ee798b5949837" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/bookDDL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/bookDDL.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/error.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +139,7 @@
       <workItem from="1569071482731" duration="199000" />
       <workItem from="1569071722506" duration="18000" />
       <workItem from="1569120133552" duration="7996000" />
-      <workItem from="1570238216343" duration="10369000" />
+      <workItem from="1570238216343" duration="13043000" />
     </task>
     <servers />
   </component>
@@ -161,7 +163,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/project1$Flask__application_py_.coverage" NAME="Flask (application.py) Coverage Results" MODIFIED="1570251480092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project1$Flask__application_py_.coverage" NAME="Flask (application.py) Coverage Results" MODIFIED="1570254053307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project1$project1.coverage" NAME="project1 Coverage Results" MODIFIED="1566708974767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

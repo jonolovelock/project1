@@ -77,3 +77,6 @@ on a.id = b.author_id
 SELECT * from books where title = 'The Dark Is Rising';
 SELECT * from books where title Like'%Dark%';
 
+SELECT rev.rating as rating, rev.review as review, concat_ws(' ', users.firstname, users.lastname) as reviewer
+FROM reviews rev Left Join users on rev.reviewer = users.id
+WHERE rev.id = 4;

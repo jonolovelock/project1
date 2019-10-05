@@ -53,7 +53,7 @@ def book(book_id):
     if request.method == "POST":
         rating = request.form.get("rating")
         review = request.form.get("review")
-        reviewer = request.form.get("reviewer")
+        reviewer = session["user_id"]
         if db.execute("SELECT * from reviews WHERE reviewer = :reviewer", {"reviewer": reviewer}).rowcount > 0:
             return render_template("error.html", message="Sorry, you are only able to submit one review per book")
         db.execute("INSERT into reviews"
@@ -66,13 +66,12 @@ def book(book_id):
         db.commit()
 
 
-
-    # Although only one book, flask still treats SQL response as a list
     dbbook = db.execute("SELECT * FROM books WHERE id = :id", {"id": book_id})
 
-    #probably inefficent to connext to DB twice
-    dbreviews = db.execute("SELECT * FROM reviews WHERE book = :id", {"id": book_id})
-
+    dbreviews = db.execute("SELECT rev.rating as rating, rev.review as review, "
+                           "concat_ws(' ', users.firstname, users.lastname) as reviewer "
+                           "FROM reviews rev Left Join users on rev.reviewer = users.id WHERE rev.book = :id",
+                           {"id": book_id})
     return render_template("book.html", books=dbbook, reviews=dbreviews)
 
 @app.route("/register", methods=["GET", "POST"])
@@ -110,8 +109,7 @@ def login():
         for user in dbuser:
             if user.password == password:
                 session["user_id"]= user.id
-                print(session["user_id"])
-                message = "You have successfully loggged in"
+                message = "You have successfully logged in"
             else:
                 message = "Incorrect User Name or Password"
             return render_template("login.html", message=message)
