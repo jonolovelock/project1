@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    Error Page
+
 {% endblock %}
 
 {% block body %}
-
-    <p>{% error %}</p>
+    <h2>It looks like something went wrong!</h2>
+    <p>{{ message }} </p>
 
 {% endblock %}
