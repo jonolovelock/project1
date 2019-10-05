@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8129a076-dcd9-4a07-808c-130c0572c6f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/flask_session/0058b5ea229630b3018b0cce87266417" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_session/2029240f6d1128be89ddc32729463129" beforeDir="false" afterPath="$PROJECT_DIR$/flask_session/2029240f6d1128be89ddc32729463129" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_session/9cab230c549382a40784e7c857a0ca4e" beforeDir="false" afterPath="$PROJECT_DIR$/flask_session/9cab230c549382a40784e7c857a0ca4e" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +37,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -73,7 +74,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Flask server.Flask (application.py)">
+  <component name="RunManager" selected="Flask server.project1">
+    <configuration name="currency2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="project1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/0HWD/LectureDeets/4_ORM_API" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Documents/0HWD/LectureDeets/4_ORM_API/currency2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Flask (application.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
       <module name="project1" />
       <option name="target" value="$PROJECT_DIR$/application.py" />
@@ -106,6 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.currency2" />
         <item itemvalue="Flask server.Flask (application.py)" />
       </list>
     </recent_temporary>
@@ -137,7 +161,12 @@
       <workItem from="1569071722506" duration="18000" />
       <workItem from="1569120133552" duration="7996000" />
       <workItem from="1570238216343" duration="16570000" />
-      <workItem from="1570263278531" duration="3118000" />
+      <workItem from="1570263278531" duration="3792000" />
+      <workItem from="1570276098389" duration="1388000" />
+      <workItem from="1570277548684" duration="844000" />
+      <workItem from="1570279185001" duration="43000" />
+      <workItem from="1570279246164" duration="24000" />
+      <workItem from="1570279435900" duration="4844000" />
     </task>
     <servers />
   </component>
@@ -161,7 +190,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/project1$Flask__application_py_.coverage" NAME="Flask (application.py) Coverage Results" MODIFIED="1570266623266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project1$project1.coverage" NAME="project1 Coverage Results" MODIFIED="1566708974767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/project1$Flask__application_py_.coverage" NAME="Flask (application.py) Coverage Results" MODIFIED="1570277236550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project1$currency2.coverage" NAME="currency2 Coverage Results" MODIFIED="1570277591183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/0HWD/LectureDeets/4_ORM_API" />
+    <SUITE FILE_PATH="coverage/project1$project1.coverage" NAME="project1 Coverage Results" MODIFIED="1570284068932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

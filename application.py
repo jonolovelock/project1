@@ -1,4 +1,5 @@
 import os
+import requests
 
 from flask import Flask, render_template, request, session
 from flask_session import Session
@@ -75,7 +76,19 @@ def book(book_id):
                            "concat_ws(' ', users.firstname, users.lastname) as reviewer "
                            "FROM reviews rev Left Join users on rev.reviewer = users.id WHERE rev.book = :id",
                            {"id": book_id})
-    return render_template("book.html", books=dbbook, reviews=dbreviews)
+    for newBook in dbbook:
+        res = requests.get("https://www.goodreads.com/book/review_counts.json",
+                       params={"key": "OtyNZazIiejX4HFNpx80cA", "isbns": newBook.isbn})
+        if res.status_code == 200:
+            goodReads = res.json()
+            print(goodReads)
+            grCount = goodReads['books'][0]['ratings_count']
+            grRating = goodReads['books'][0]['average_rating']
+            print(grCount)
+            print(grRating)
+            return render_template("book.html", book=newBook, reviews=dbreviews, grCount=grCount, grRating=grRating)
+        else:
+            return render_template("book.html", book=newBook, reviews=dbreviews)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():

@@ -6,12 +6,18 @@
 
 {% block body %}
 
-    {% for book in books %}
+    {% if book %}
         <ul>
             <li> {{ book.title }} was written by {{ book.author }} in {{ book.year }} and it's ISBN Number is {{ book.isbn }}</li>
 
         </ul>
-            <p> Reviews left by other users are below! If you'd like to add your own you will need to Register and Log in first </p>
+            {% if session.get("user_id") %}
+                <p> Reviews left by other users are below! Feel free to add your own!</p>
+            {% endif %}
+            {% if not session.get("user_id") %}
+                <p>If you'd like to add your own you will need to Register and Log in first </p>
+            {% endif %}
+
             {% if session.get("user_id") %}
             <form action="{{ url_for('book', book_id = book.id)     }}" method="post">
                 <div class="form-group">
@@ -25,23 +31,29 @@
             <button type="submit" class="btn btn-primary mb-2">Submit Review</button>
             </form>
             {% endif %}
-    {% endfor %}
+    {% endif %}
 
-    {% if reviews is not none %}
-        <div class="container">
-            {% for review in reviews %}
-                <div class="row">
-                    <div class="col-2">
-                        {{ review.rating }}
+    {% if reviews %}
+        <p>Reviews by other users:</p>
+            <div class="container">
+                {% for review in reviews %}
+                    <div class="row">
+                        <div class="col-2">
+                            {{ review.rating }}
+                        </div>
+                        <div class="col-6">
+                            {{ review.review }}
+                        </div>
+                        <div class="col-2">
+                            {{ review.reviewer }}
+                        </div>
                     </div>
-                    <div class="col-6">
-                        {{ review.review }}
-                    </div>
-                    <div class="col-2">
-                        {{ review.reviewer }}
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+    {% endif %}
+    {% if grRating %}
+        <p>Reviews from Goodreadings.com:</p>
+        <p>Average rating: {{ grRating }}</p>
+        <p>Number of ratings: {{ grCount }}</p>
     {% endif %}
 {% endblock %}
