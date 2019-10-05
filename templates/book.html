@@ -5,17 +5,20 @@
 {% endblock %}
 
 {% block body %}
+
     {% for book in books %}
         <ul>
             <li> {{ book.title }} was written by {{ book.author }} in {{ book.year }} and it's ISBN Number is {{ book.isbn }}</li>
 
         </ul>
             <p> Reviews left by other users are below! If you'd like to add your own you will need to Register and Log in first </p>
+            {% if session.get("user_id") %}
             <form action="{{ url_for('book', book_id = book.id)     }}" method="post">
                 <input type="text" name="review" placeholder="Add your book review">
-                <input type="number" name="rating" placeholder="Rating: 1 (low) - 5 (high)">
+                <input type="number" name="rating" placeholder="Rating: 1 (low) - 5 (high)" min="1" max="5" id="formWidth">
                 <button>Submit</button>
             </form>
+            {% endif %}
     {% endfor %}
 
     {% if reviews is not none %}
