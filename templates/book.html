@@ -14,9 +14,15 @@
             <p> Reviews left by other users are below! If you'd like to add your own you will need to Register and Log in first </p>
             {% if session.get("user_id") %}
             <form action="{{ url_for('book', book_id = book.id)     }}" method="post">
-                <input type="text" name="review" placeholder="Add your book review">
-                <input type="number" name="rating" placeholder="Rating: 1 (low) - 5 (high)" min="1" max="5" id="formWidth">
-                <button>Submit</button>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">What did you think of this book?</label>
+                    <input class="form-control" type="text" name="textreview" placeholder="Add your book review">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">What would you rate it out of 1 (low) to 5 (high)?</label>
+                    <input class="form-control" type="number" name="rating" placeholder="Rating: 1 (low) - 5 (high)" min="1" max="5">
+                </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit Review</button>
             </form>
             {% endif %}
     {% endfor %}

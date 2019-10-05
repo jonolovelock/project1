@@ -52,19 +52,22 @@ def books():
 def book(book_id):
     if request.method == "POST":
         rating = request.form.get("rating")
-        review = request.form.get("review")
-        reviewer = session["user_id"]
-        if db.execute("SELECT * from reviews WHERE reviewer = :reviewer", {"reviewer": reviewer}).rowcount > 0:
-            return render_template("error.html", message="Sorry, you are only able to submit one review per book")
+        newReview = request.form.get("textreview")
+
+        currentUser = session["user_id"]
+        reviewList = db.execute("SELECT reviewer, book from reviews WHERE reviewer = :reviewer", {"reviewer": currentUser})
+        for review in reviewList:
+            if review.reviewer == currentUser and review.book == book_id:
+                return render_template("error.html", message="Sorry, you are only able to submit one review per book")
+
         db.execute("INSERT into reviews"
                    "(rating, review, reviewer, book)"
-                   "VALUES (:rating, :review,:reviewer, :book_id)",
+                   "VALUES (:rating, :review, :reviewer, :book_id)",
                    {"rating": rating,
-                    "review": review,
-                    "reviewer": reviewer,
+                    "review": newReview,
+                    "reviewer": currentUser,
                     "book_id": book_id})
         db.commit()
-
 
     dbbook = db.execute("SELECT * FROM books WHERE id = :id", {"id": book_id})
 
