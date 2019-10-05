@@ -6,12 +6,12 @@
 
 {% block body %}
     <p>
-        This is the booklist
+        This is the booklist, on this page you can:
     </p>
 
     <ul>
-        <li>Search for a list of books</li>
-        <li>Click through from a book to go to detailed page</li>
+        <li>Search for a list of books using Title, ISBN or Author!</li>
+        <li>Click through to read reviews for a specific book!</li>
     </ul>
 
     <form action="{{ url_for('books') }}" method="post">
@@ -24,6 +24,7 @@
     <p>Based on results from DB: build a list</p>
 
     {% if books is not none %}
+
         <div class="container">
             {% for book in books %}
                 <div class="row">
