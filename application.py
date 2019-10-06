@@ -124,11 +124,11 @@ def login():
         dbuser = db.execute("Select * from users where username= :username", {"username": username})
         for user in dbuser:
             if user.password == password:
-                session["user_id"]= user.id
+                session["user_id"] = user.id
                 message = "You have successfully logged in"
             else:
                 message = "Incorrect User Name or Password"
-            return render_template("login.html", message=message)
+            return render_template("index.html", message=message)
     return render_template("login.html")
 
 @app.route("/api/<string:isbn>")

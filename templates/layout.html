@@ -20,12 +20,16 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/">BookWorld</a>
               </li>
+              {% if session.get("user_id") %}
               <li class="nav-item active">
                 <a class="nav-link" href="/books">Search for Books</a>
               </li>
+              {% endif %}
+              {% if session.get("user_id") is none %}
               <li class="nav-item active">
                 <a class="nav-link" href="/register">Register</a>
               </li>
+              {% endif %}
               {% if session.get("user_id") is none %}
               <li class="nav-item active">
                 <a class="nav-link" href="/login">Log In</a>

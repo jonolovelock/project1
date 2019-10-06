@@ -1,22 +1,17 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    Book Detailed Page
+    {{ book.title }} in detail
 {% endblock %}
 
 {% block body %}
 
     {% if book %}
-        <ul>
-            <li> {{ book.title }} was written by {{ book.author }} in {{ book.year }} and it's ISBN Number is {{ book.isbn }}</li>
-
-        </ul>
-            {% if session.get("user_id") %}
-                <p> Reviews left by other users are below! Feel free to add your own!</p>
-            {% endif %}
-            {% if not session.get("user_id") %}
-                <p>If you'd like to add your own you will need to Register and Log in first </p>
-            {% endif %}
+        <p>{{ book.title }} was written by {{ book.author }} in {{ book.year }} and it's ISBN Number is {{ book.isbn }}</p>
+        <p> Reviews left by other users are below! Feel free to add your own! (Note: you can only submit one review per book)</p>
+        {% if not session.get("user_id") %}
+            <p>If you'd like to add your own you will need to Register and Log in first </p>
+        {% endif %}
 
             {% if session.get("user_id") %}
             <form action="{{ url_for('book', book_id = book.id)     }}" method="post">
@@ -34,7 +29,23 @@
     {% endif %}
 
     {% if reviews %}
-        <p>Reviews by other users:</p>
+        <p><i>Reviews by other users:</i></p>
+            <div class="container">
+                    <div class="row">
+                        <div class="col-2">
+                           <b>Rating</b>
+                        </div>
+                        <div class="col-6">
+                            <b>Review</b>
+                        </div>
+                        <div class="col-2">
+                            <b>Reviewer</b>
+                        </div>
+                    </div>
+            </div>
+    {% endif %}
+
+    {% if reviews %}
             <div class="container">
                 {% for review in reviews %}
                     <div class="row">
@@ -52,7 +63,7 @@
             </div>
     {% endif %}
     {% if grRating %}
-        <p>Reviews from Goodreadings.com:</p>
+        <p><i>Reviews from Goodreadings.com:</i></p>
         <p>Average rating: {{ grRating }}</p>
         <p>Number of ratings: {{ grCount }}</p>
     {% endif %}

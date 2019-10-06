@@ -6,10 +6,15 @@
 
 {% block body %}
     <p>
-        This is the index page where you can select to login of go to the books search page
+        Welcome to Jono's book database!
     </p>
     <ul>
-        <li><a href="{{ url_for('books') }}">Click here if you would like to search our Books Database</a></li>
+        {% if session.get("user_id") is none %}
+        <li>If you would like to search our database, please register and login first</li>
+        {% endif %}
+        {% if message %}
+            <li>{{ message }} <a href="{{ url_for('books')}}"> Click here to search!</a></li>
+        {% endif %}
         <li><a href="{{ url_for('register') }}">Click here if you would like to Register</a></li>
         <li><a href="{{ url_for('login') }}">Click here if you would like to Log in</a></li>
     </ul>

@@ -21,7 +21,30 @@
         <button>Search</button>
     </form>
 
-    <p>Based on results from DB: build a list</p>
+    <p>If any books match your search, they will appear below, click the 'More Details' link on the right hand side
+        to learn more or leave you own review</p>
+
+    {% if books is not none %}
+        <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <b>Title</b>
+                    </div>
+                    <div class="col-3">
+                        <b>ISBN</b>
+                    </div>
+                    <div class="col-2">
+                        <b>Year</b>
+                    </div>
+                    <div class="col-3">
+                        <b>Author</b>
+                    </div>
+                     <div class="col-1">
+                        <b>More Info</b>
+                    </div>
+                </div>
+        </div>
+    {% endif %}
 
     {% if books is not none %}
 
