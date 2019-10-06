@@ -7,6 +7,9 @@ Web Programming with Python and JavaScript
 your external DB, and set your environment variables 
 as explained in Project 1 Instructions: https://docs.cs50.net/web/2019/x/projects/1/project1.html)
 
+Note: Your enviroment must have the DATABASE_URL set to:
+"postgres://fxajisrezkeids:a29d2a65c7596a7f79572a586c1a01f5403830a71ae26edc4d0f7baae54f508f@ec2-54-195-252-243.eu-west-1.compute.amazonaws.com:5432/d1028oorm7i8lj"
+
 2. Connect to the Heroku CLI (explained in Heroku set up), this will connect you to the default database
 created for you by Heroku. Then open sql/bookDDL.sql, copy paste the Data Definition Language to
 Create tables for Books, Users, Reviews against your Heroku DB (you can validate this was successful
