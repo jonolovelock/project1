@@ -82,7 +82,7 @@ def book(book_id):
         if res.status_code == 200:
             goodReads = res.json()
             print(goodReads)
-            grCount = goodReads['books'][0]['ratings_count']
+            grCount = goodReads['books'][0]['work_ratings_count']
             grRating = goodReads['books'][0]['average_rating']
             print(grCount)
             print(grRating)
